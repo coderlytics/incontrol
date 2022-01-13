@@ -17,7 +17,7 @@ func Start(configFile string) {
 
 // initLogging initializes the logging subsystem with the configured log level
 func initLogging() {
-	lvl, err := log.ParseLevel(config.Cfg.Logging.LogLevel)
+	lvl, err := log.ParseLevel(config.Cfg.Server.Logging.LogLevel)
 	if err != nil {
 		log.Fatal(err)
 	}
