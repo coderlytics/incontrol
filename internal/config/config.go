@@ -27,8 +27,8 @@ func InitAndWatchConfig(configFile string) error {
 }
 
 // read is reading the values from the configuration file and putting it in the Configuration struct
-func read(configFolder string) error {
-	viper.AddConfigPath(configFolder)
+func read(configFile string) error {
+	viper.SetConfigFile(configFile)
 	err := viper.ReadInConfig()
 
 	if err != nil {
