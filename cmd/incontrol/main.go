@@ -8,9 +8,9 @@ import (
 
 func main() {
 	var (
-		configFolder = flag.String("config", "conf/", "Absolute or relative path to the config folder")
+		configPath = flag.String("config", "config.yml", "Path to the config file")
 	)
 
 	flag.Parse()
-	internal.Start(*configFolder)
+	internal.Start(*configPath)
 }
