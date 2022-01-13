@@ -5,6 +5,7 @@ go 1.17
 require (
 	github.com/creasty/defaults v1.5.2 // indirect
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
+	github.com/go-chi/chi/v5 v5.0.7 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
 	github.com/go-playground/universal-translator v0.18.0 // indirect
 	github.com/go-playground/validator/v10 v10.10.0 // indirect

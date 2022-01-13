@@ -1,4 +1,4 @@
 server:
-  port: 5150
+  port: 5150 # port on which the server is listening; this can not be changed during runtime
   logging:
-    level: info
+    level: info # minimum level of printed log messages; can ban changed during runtime
