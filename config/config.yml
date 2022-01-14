@@ -1,4 +1,40 @@
+# general configuration of the server
 server:
   port: 5150 # port on which the server is listening; this can not be changed during runtime
-  logging:
-    level: info # minimum level of printed log messages; can ban changed during runtime
+  logging: # configure the loggin subsystem
+    level: info # minimum level of printed log messages
+
+# configuration of available hosts
+hosts:
+  - hostname: srv1.local # hostname or ip address of the server
+    port: 22 # ssh port
+    name: Ticket system # human readable name of the server
+    description: Server hosting our ticket system # description of what is running on the server
+    commands:
+      - Restart # has to match a name in the groups section
+    groups:
+      - Production systems # has to match a name in the groups section
+    labels: # list of labels to apply
+      - Production # has to match a name in the labels section
+
+# configuration of the commands which can be executed by hosts
+commands:
+  - name: Restart # unique name of the command
+    steps: # steps are executed in order an only if the previous step was successful
+      - command: shutdown -h now # the command to execute
+        check: # optional command to check if the executed command was sucessful
+          - command: ls # the command to check the execution
+            retries: 3 # number of retries until the check will fail
+            waitTime: 5 # seconds between until the next retry will be performed
+        successCode: 0 # optional status code of the executed command to verify a successful execution
+    check: # optional command to check if the executed steps have been successful
+
+# configuration of host groups
+groups:
+  - name: Production systems # unique name of the group
+    order: 1 # used for ordering the group in the user interface
+
+# configuration of labels to categorize hosts
+labels:
+  - name: Production # unique name of the label
+    color: FF1700 # html color used for the label
